@@ -1,0 +1,322 @@
+/* Variables CSS: Paleta de colores de alto contraste */
+:root {
+    --color-dark-solid: #000000; /* Negro puro para fondos muy oscuros */
+    --color-light-solid: #FFFFFF; /* Blanco puro para fondos muy claros */
+    --color-accent-blue: #3498DB; /* Azul vibrante (nuestro color de agua) */
+    --color-text-on-light: #2C3E50; /* Azul muy oscuro, casi negro, para texto sobre fondos claros */
+    --color-text-on-dark: #F8F8F8; /* Blanco muy claro, casi blanco, para texto sobre fondos oscuros */
+
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Reset y Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-text-on-light); /* Color de texto predeterminado para el body (oscuro) */
+    background-color: var(--color-light-solid); /* Fondo predeterminado (blanco puro) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section: Fondo muy oscuro (negro + degradado), Título azul, Texto blanco */
+.hero-section {
+    position: relative;
+    height: 70vh;
+    /* Fondo con una fuerte capa de negro para asegurar el contraste del texto */
+    background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), /* 95% negro opaco */
+                url('hero_agua_contaminada.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    padding: 40px;
+    /* No necesitamos un background-color aquí, el fondo de la sección ya es oscuro */
+}
+
+.hero-section h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--color-accent-blue); /* Título en azul fuerte */
+    /* Sombra de texto para asegurar que destaque más */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-section p {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: var(--color-text-on-dark); /* Texto en blanco */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1.5s ease-out 0.5s;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Secciones de Contenido Comunes */
+.content-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Fondo muy claro para secciones de contenido general (intro, impacto, contexto) */
+.content-section:not(.data-section):not(.reflection-section) {
+    background-color: var(--color-light-solid); /* Blanco puro */
+    color: var(--color-text-on-light); /* Texto azul oscuro */
+}
+
+/* Títulos de secciones */
+.content-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    color: var(--color-text-on-light); /* Títulos en azul oscuro */
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent-blue);
+    border-radius: 2px;
+}
+
+.content-section p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+/* Sección de Datos y Evidencia: Fondo negro, Números azul acento, Texto blanco */
+.data-section {
+    background-color: var(--color-dark-solid); /* ¡Fondo NEGRO PURO! */
+    color: var(--color-text-on-dark); /* Texto de la sección en blanco */
+}
+
+.data-section h2 {
+    color: var(--color-text-on-dark); /* Título de la sección en blanco */
+}
+
+.data-section h2::after {
+    background-color: var(--color-text-on-dark); /* Línea divisoria en blanco */
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.data-item {
+    background-color: rgba(255, 255, 255, 0.08); /* Ligeramente transparente blanco sobre negro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.data-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.data-item h3 {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    color: var(--color-accent-blue); /* ¡Números en AZUL FUERTE! */
+    margin-bottom: 10px;
+    font-weight: 700;
+    /* Sin sombra, el azul sobre negro es suficiente */
+}
+
+.data-item p {
+    font-size: 1em;
+    margin: 0;
+    color: var(--color-text-on-dark); /* Texto en blanco */
+}
+
+.data-summary {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-top: 50px;
+    color: var(--color-text-on-dark); /* Aseguramos que sea blanco */
+}
+
+/* Sección de Impacto Humano (Mismo que antes, buen contraste) */
+.impact-section {
+    background-color: var(--color-light-solid); /* Fondo blanco */
+    color: var(--color-text-on-light); /* Texto azul oscuro */
+}
+
+.impact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card {
+    background-color: var(--color-light-solid); /* Fondo blanco para las tarjetas */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 4px solid var(--color-accent-blue);
+}
+
+.card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    color: var(--color-text-on-light); /* Título oscuro */
+    padding: 20px 20px 10px;
+}
+
+.card p {
+    font-size: 1em;
+    line-height: 1.6;
+    padding: 0 20px 20px;
+    margin: 0;
+}
+
+.impact-note {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-warning); /* Rojo para advertencia sobre fondo blanco */
+    margin-top: 50px;
+}
+
+/* Sección de Contexto Histórico */
+.context-section {
+    background-color: var(--color-background-grey); /* Fondo gris claro */
+    color: var(--color-text-on-light); /* Texto azul oscuro */
+}
+
+/* Sección de Llamado a la Reflexión: Fondo negro, Texto blanco y azul acento */
+.reflection-section {
+    background-color: var(--color-dark-solid); /* ¡Fondo NEGRO PURO! */
+    color: var(--color-text-on-dark); /* Texto de la sección en blanco */
+}
+
+.reflection-section h2 {
+    color: var(--color-text-on-dark); /* Título en blanco */
+}
+
+.reflection-section h2::after {
+    background-color: var(--color-text-on-dark); /* Línea divisoria en blanco */
+}
+
+.reflection-section p {
+    color: var(--color-text-on-dark); /* ¡Texto en BLANCO PURO! */
+    margin-bottom: 25px;
+}
+
+.reflection-section .final-thought {
+    font-family: var(--font-heading);
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-top: 50px;
+    color: var(--color-accent-blue); /* ¡Acento AZUL FUERTE! */
+}
+
+/* Footer: Fondo negro, texto blanco */
+footer {
+    background-color: var(--color-dark-solid); /* Fondo negro puro */
+    color: var(--color-text-on-dark); /* Texto blanco */
+    text-align: center;
+    padding: 30px 0;
+    border-top: 5px solid var(--color-accent-blue);
+}
+
+footer p {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Diseño Responsivo Básico */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 50vh;
+    }
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+    .content-section {
+        padding: 40px 0;
+    }
+    .content-section h2 {
+        font-size: 1.8em;
+    }
+    .data-grid, .impact-cards {
+        grid-template-columns: 1fr;
+    }
+    .card img {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 1.8em;
+    }
+    .hero-section p {
+        font-size: 0.9em;
+    }
+    .data-item h3 {
+        font-size: 2.2em;
+    }
+    .card h3 {
+        font-size: 1.2em;
+    }
+}
